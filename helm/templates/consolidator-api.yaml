@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consolidator-api
+spec:
+  selector:
+    app: consolidator-api
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8090
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consolidator-api
+  labels:
+    app: consolidator-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consolidator-api
+  template:
+    metadata:
+      labels:
+        app: consolidator-api
+    spec:
+      containers:
+        - name: consolidator-api
+          image: consolidator-api
+          imagePullPolicy: Never

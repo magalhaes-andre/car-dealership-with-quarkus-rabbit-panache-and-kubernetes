@@ -11,7 +11,6 @@ public class Brand {
     private String name;
     @JsonbProperty("codigo")
     private String code;
-
     public String getName() {
         return name;
     }
